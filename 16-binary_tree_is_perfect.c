@@ -12,18 +12,11 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	left_depth = binary_tree_height(tree->left);
-	right_depth = binary_tree_height(tree->right);
+	left_depth = binary_tree_height(tree->left) + 1;
+	right_depth = binary_tree_height(tree->right) + 1;
 
-	if (left_depth == right_depth &&
-	binary_tree_is_perfect(tree->left) &&
-	binary_tree_is_perfect(tree->right))
+	if (left_depth == right_depth)
 		return (1);
-	else if (left_depth == right_depth &&
-	(tree->left != NULL || binary_tree_is_perfect(tree->left)) &&
-	(tree->right != NULL || binary_tree_is_perfect(tree->right)))
-		return (1);
-
 	return (0);
 }
 
