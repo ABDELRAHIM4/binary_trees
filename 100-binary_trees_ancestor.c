@@ -68,8 +68,8 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 			depth_s--;
 		}
 	}
-	while (current && !(binary_t(current, first)) && 
-			!(binary_t(current, second)))
+	while (current && !(binary_t(current, first->n)) && 
+			!(binary_t(current, second->n)))
 			current = current->parent;
 	return (current);
 }
