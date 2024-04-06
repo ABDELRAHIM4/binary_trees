@@ -59,17 +59,25 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 	{
 		if (depth_f > depth_s)
 		{
-			current = current->parent;
+			first = first->parent;
 			depth_f--;
 		}
 		else
 		{
-			current = current->parent;
+			second = second->parent;
 			depth_s--;
 		}
 	}
-	while (current && !(binary_t(current, first->n)) && 
+	current = (binary_tree_t *)first;
+	while (current)
+	{
+		if (current == second->parent)
+			return (current);
+		current = current->parent;
+	}
+	/*while (current && !(binary_t(current, first->n)) && 
 			!(binary_t(current, second->n)))
 			current = current->parent;
-	return (current);
+	return (current);*/
+	return (NULL);
 }
