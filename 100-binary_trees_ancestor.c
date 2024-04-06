@@ -26,7 +26,7 @@ size_t depth_t(const binary_tree_t *node)
 int binary_t(const binary_tree_t *ans, const binary_tree_t *node)
 {
 	const binary_tree_t *current = node;
-	
+
 	while (current)
 	{
 		if (ans == current)
@@ -47,7 +47,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 {
 	size_t depth_f = 0, depth_s = 0;
 	binary_tree_t *current;
-	
+
 	if (!first || !second)
 	{
 		return (NULL);
@@ -75,9 +75,5 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 			return (current);
 		current = current->parent;
 	}
-	/*while (current && !(binary_t(current, first->n)) && 
-			!(binary_t(current, second->n)))
-			current = current->parent;
-	return (current);*/
 	return (NULL);
 }
