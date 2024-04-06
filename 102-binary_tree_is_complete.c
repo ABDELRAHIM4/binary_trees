@@ -2,13 +2,19 @@
 
 int check(const binary_tree_t *current)
 {
-	//int com = 0;
 	if (current == NULL)
                 return (0);
        	if (current->left == NULL && current->right != NULL)
         	return (0);
         if (current->left != NULL && current->right == NULL)
                 return(0);
+	if (current->left != NULL && current->right->left!= NULL)
+                {
+                        current = current->right;
+                }
+        else
+        	current = NULL;
+
 	return (1);
 }
 size_t binary_tree_height(const binary_tree_t *tree)
@@ -46,14 +52,15 @@ int binary_tree_is_complete(const binary_tree_t *tree)
                         else
                                 com = 0;*/
                 if (current->left != NULL && current->right != NULL)
-			{
+		{
 			left_h = binary_tree_height(current->left);
                         right_h = binary_tree_height(current->right);
 
                         if (left_h != right_h)
                                 com = 0;
+			com = 1;
                 	current = current->left;
-			}
+		}
                 else if (current->left != NULL)
                         	current = current->right;
                 else
