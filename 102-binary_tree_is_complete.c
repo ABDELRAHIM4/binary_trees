@@ -1,5 +1,9 @@
 #include "binary_trees.h"
-
+/*
+ * check - check the node
+ *@current: pointer to node
+ *Return: 1 if complete
+ */
 int check(const binary_tree_t *current)
 {
 	if (current == NULL)
@@ -17,21 +21,11 @@ int check(const binary_tree_t *current)
 
 	return (1);
 }
-/*size_t binary_tree_height(const binary_tree_t *tree)
-{
-        size_t left_height = 0, right_height = 0;
-
-        if (tree == NULL)
-                return (0);
-
-        left_height = binary_tree_height(tree->left);
-        right_height = binary_tree_height(tree->right);
-
-        if (left_height > right_height)
-                return (left_height + 1);
-        else
-                return (right_height + 1);
-}*/
+/**
+ * binary_tree_is_complete - checks if a binary tree is complete
+ *@tree: pointer to the root node of the tree to check
+ *Return: return 1 if complete otherwise 0
+*/
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	const binary_tree_t *second = tree;
@@ -55,6 +49,8 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	}
 	while (second)
 	{
+			if (check(second->left) == 0 || check(second->right) == 0)
+                                com = 0;
                         if (second->left != NULL && second->right != NULL)
                                 com = 1;
                         if (second->left == NULL && second->right == NULL)
