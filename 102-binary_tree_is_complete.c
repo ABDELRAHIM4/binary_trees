@@ -30,7 +30,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	const binary_tree_t *second = tree;
 	const binary_tree_t *current = tree;
-	//const binary_tree_t *second = tree;
         int com = 1;
 	
 	if (tree == NULL)
@@ -57,23 +56,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
                                 com = 1;
                         else
                                 com = 0;
-                /*if (current->left != NULL && current->right != NULL)
-		{
-			left_h = binary_tree_height(current->left);
-                        right_h = binary_tree_height(current->right);
-
-                        if (left_h != right_h)
-                                com = 0;
-			com = 1;
-                	current = current->left;
-		}
-                else if (current->left != NULL)
-                        	current = current->right;
-                else
-                        	current = NULL;
-			check(current->left);
-			 check(current->right);*/
-			 second = second->left;
+        	second = second->left;
 	}
 	return (com);
 }
