@@ -17,7 +17,7 @@ int check(const binary_tree_t *current)
 
 	return (1);
 }
-size_t binary_tree_height(const binary_tree_t *tree)
+/*size_t binary_tree_height(const binary_tree_t *tree)
 {
         size_t left_height = 0, right_height = 0;
 
@@ -31,27 +31,37 @@ size_t binary_tree_height(const binary_tree_t *tree)
                 return (left_height + 1);
         else
                 return (right_height + 1);
-}
+}*/
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
+	const binary_tree_t *second = tree;
 	const binary_tree_t *current = tree;
 	//const binary_tree_t *second = tree;
-        int com = 1, left_h = 0, right_h = 0;
+        int com = 1;
 	
 	if (tree == NULL)
 		return (0);
 	while (current)
 	{
-		if (check(current->left) == 0 || check(current->right) == 0)
-			com = 0;
-
-                        /*if (second->left != NULL && second->right != NULL)
+			if (check(current->left) == 0 || check(current->right) == 0)
+				com = 0;
+			if (current->left != NULL && current->right != NULL)
+                                com = 1;
+        		if (current->left == NULL && current->right == NULL)
+                		com = 1;
+        		else
+                		com = 0;
+			current = current->left;
+	}
+	while (second)
+	{
+                        if (second->left != NULL && second->right != NULL)
                                 com = 1;
                         if (second->left == NULL && second->right == NULL)
                                 com = 1;
                         else
-                                com = 0;*/
-                if (current->left != NULL && current->right != NULL)
+                                com = 0;
+                /*if (current->left != NULL && current->right != NULL)
 		{
 			left_h = binary_tree_height(current->left);
                         right_h = binary_tree_height(current->right);
@@ -64,10 +74,10 @@ int binary_tree_is_complete(const binary_tree_t *tree)
                 else if (current->left != NULL)
                         	current = current->right;
                 else
-                        	current = NULL;/*
+                        	current = NULL;
 			check(current->left);
-			 check(current->right);
-			 current = current->left;*/
+			 check(current->right);*/
+			 second = second->left;
 	}
 	return (com);
 }
